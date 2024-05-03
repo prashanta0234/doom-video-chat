@@ -9,15 +9,13 @@ const HomeLayout = ({
 }: Readonly<{
 	children: React.ReactNode;
 }>) => {
-	auth().protect();
 	return (
 		<main>
 			<NavBar />
 			<section className="flex">
 				<SideBar />
-				<StreamVideoProvider>
-					<div className="p-9 flex-1">{children}</div>
-				</StreamVideoProvider>
+
+				<div className="p-9 flex-1">{children}</div>
 			</section>
 		</main>
 	);
