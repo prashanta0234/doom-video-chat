@@ -1,5 +1,6 @@
 import NavBar from "@/components/shared/navBar";
 import SideBar from "@/components/shared/sideBar";
+import { auth } from "@clerk/nextjs/server";
 import React from "react";
 
 const HomeLayout = ({
@@ -7,6 +8,7 @@ const HomeLayout = ({
 }: Readonly<{
 	children: React.ReactNode;
 }>) => {
+	auth().protect();
 	return (
 		<main>
 			<NavBar />

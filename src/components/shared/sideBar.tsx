@@ -5,7 +5,7 @@ import { sidebarLinks } from "@/constants";
 const SideBar = () => {
 	return (
 		<>
-			<section className="min-h-screen w-64 bg-dark-2 pt-12">
+			<section className="min-h-screen w-64 bg-dark-2 pt-12 hidden md:inline">
 				{sidebarLinks.map((item, i) => (
 					<SideBarButton
 						key={i}

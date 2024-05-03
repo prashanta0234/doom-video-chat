@@ -3,7 +3,7 @@ import React from "react";
 
 const HomeOptionsCards = () => {
 	return (
-		<div className="my-8 grid md:grid-cols-4 sm:grid-cols-1 gap-3">
+		<div className="my-8 grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 gap-3">
 			<div className="h-64 w-full bg-[#FF742E] rounded-xl p-6">
 				<div className="flex h-full flex-col justify-between">
 					<div>
@@ -16,7 +16,7 @@ const HomeOptionsCards = () => {
 						/>
 					</div>
 					<div>
-						<p className="text-2xl font-bold">New Meeting</p>
+						<p className="text-xl md:text-2xl font-bold">New Meeting</p>
 						<p className="text-lg leading-6 font-normal">
 							Setup a new recording
 						</p>
@@ -35,7 +35,7 @@ const HomeOptionsCards = () => {
 						/>
 					</div>
 					<div>
-						<p className="text-2xl font-bold">Join Meeting</p>
+						<p className="text-xl md:text-2xl font-bold">Join Meeting</p>
 						<p className="text-lg leading-6 font-normal">via invitation link</p>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ const HomeOptionsCards = () => {
 						/>
 					</div>
 					<div>
-						<p className="text-2xl font-bold">Schedule Meeting</p>
+						<p className="text-xl md:text-2xl font-bold">Schedule Meeting</p>
 						<p className="text-lg leading-6 font-normal">Plan your meeting</p>
 					</div>
 				</div>
@@ -69,7 +69,7 @@ const HomeOptionsCards = () => {
 						/>
 					</div>
 					<div>
-						<p className="text-2xl font-bold">View Recordings</p>
+						<p className="text-xl md:text-2xl font-bold">View Recordings</p>
 						<p className="text-lg leading-6 font-normal">Meeting recordings</p>
 					</div>
 				</div>
