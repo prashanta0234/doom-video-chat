@@ -1,79 +1,55 @@
-import Image from "next/image";
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import HomeOptionCard from "./homeOptionCard";
+import { useRouter } from "next/navigation";
+import NewMeetingDialog from "./newMettingDialog";
 
 const HomeOptionsCards = () => {
+	const [option, setOption] = useState<
+		"newMeeting" | "joinMeeting" | "scheduleMeeting" | undefined
+	>();
+	const [open, setOpen] = useState(false);
+	const router = useRouter();
+
+	const createMeeting = () => {};
 	return (
 		<div className="my-8 grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 gap-3">
-			<div className="h-64 w-full bg-[#FF742E] rounded-xl p-6">
-				<div className="flex h-full flex-col justify-between">
-					<div>
-						<Image
-							alt="new metting"
-							src={"/icons/plus.svg"}
-							height={40}
-							width={40}
-							className="p-[10px] bg-white bg-opacity-35 rounded-lg"
-						/>
-					</div>
-					<div>
-						<p className="text-xl md:text-2xl font-bold">New Meeting</p>
-						<p className="text-lg leading-6 font-normal">
-							Setup a new recording
-						</p>
-					</div>
-				</div>
-			</div>
-			<div className="h-64 w-full bg-[#0E78F9] rounded-xl p-6">
-				<div className="flex h-full flex-col justify-between">
-					<div>
-						<Image
-							alt="new metting"
-							src={"/icons/addpeople.svg"}
-							height={40}
-							width={40}
-							className="p-[10px] bg-white bg-opacity-35 rounded-lg"
-						/>
-					</div>
-					<div>
-						<p className="text-xl md:text-2xl font-bold">Join Meeting</p>
-						<p className="text-lg leading-6 font-normal">via invitation link</p>
-					</div>
-				</div>
-			</div>
-			<div className="h-64 w-full bg-[#830EF9] rounded-xl p-6">
-				<div className="flex h-full flex-col justify-between">
-					<div>
-						<Image
-							alt="new metting"
-							src={"/icons/calender.svg"}
-							height={40}
-							width={40}
-							className="p-[10px] bg-white bg-opacity-35 rounded-lg"
-						/>
-					</div>
-					<div>
-						<p className="text-xl md:text-2xl font-bold">Schedule Meeting</p>
-						<p className="text-lg leading-6 font-normal">Plan your meeting</p>
-					</div>
-				</div>
-			</div>
-			<div className="h-64 w-full bg-[#F9A90E] rounded-xl p-6">
-				<div className="flex h-full flex-col justify-between">
-					<div>
-						<Image
-							alt="new metting"
-							src={"/icons/Video.svg"}
-							height={40}
-							width={40}
-							className="p-[10px] bg-white bg-opacity-35 rounded-lg"
-						/>
-					</div>
-					<div>
-						<p className="text-xl md:text-2xl font-bold">View Recordings</p>
-						<p className="text-lg leading-6 font-normal">Meeting recordings</p>
-					</div>
-				</div>
-			</div>
+			<HomeOptionCard
+				bg="bg-[#FF742E]"
+				icon="/icons/plus.svg"
+				title="New Meeting"
+				description="Setup a new recording"
+				handleClick={() => setOption("newMeeting")}
+			/>
+			<HomeOptionCard
+				bg="bg-[#0E78F9]"
+				icon="/icons/addpeople.svg"
+				title="Join Meeting"
+				description="via invitation link"
+				handleClick={() => setOption("joinMeeting")}
+			/>
+			<HomeOptionCard
+				bg="bg-[#830EF9]"
+				icon="/icons/calender.svg"
+				title="Schedule Meeting"
+				description="Plan your meeting"
+				handleClick={() => setOption("scheduleMeeting")}
+			/>
+			<HomeOptionCard
+				bg="bg-[#F9A90E]"
+				icon="/icons/Video.svg"
+				title="View Recordings"
+				description="Meeting recordings"
+				handleClick={() => router.push("/recordings")}
+			/>
+
+			<NewMeetingDialog
+				isOpen={option === "newMeeting"}
+				onClose={() => setOption(undefined)}
+				title="Create a instant meeting"
+				buttonText="Create meeting"
+				handleClick={createMeeting}
+			/>
 		</div>
 	);
 };
