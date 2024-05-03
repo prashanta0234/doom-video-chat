@@ -1,5 +1,5 @@
 import React from "react";
-import UpcomingMeetingCard from "../shared/upcomingMeetingCard";
+import UpcomingMeetingCard from "../shared/UpcomingMeetingCard";
 import Link from "next/link";
 
 const TodaysUpcomingMeetings = () => {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import NewMeetingDialog from "./newMettingDialog";
+import NewMeetingDialog from "./NewMettingDialog";
 
 interface homeOptionCardProps {
 	bg: string;

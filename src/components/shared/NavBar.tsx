@@ -5,7 +5,7 @@ import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import SideBarButton from "./sideBarButton";
+import SideBarButton from "./SideBarButton";
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);

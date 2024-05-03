@@ -1,5 +1,5 @@
 import React from "react";
-import SideBarButton from "./sideBarButton";
+import SideBarButton from "./SideBarButton";
 import { sidebarLinks } from "@/constants";
 
 const SideBar = () => {
