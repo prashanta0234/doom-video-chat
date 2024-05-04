@@ -6,9 +6,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 	auth().protect();
 	return (
 		<main>
-			<StreamVideoProvider>
-				<div>{children}</div>
-			</StreamVideoProvider>
+			<StreamVideoProvider>{children}</StreamVideoProvider>
 		</main>
 	);
 };
