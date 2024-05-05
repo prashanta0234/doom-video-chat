@@ -1,6 +1,6 @@
 import { ParticipantView, useCallStateHooks } from "@stream-io/video-react-sdk";
 
-const Participants = () => {
+export const Participants = () => {
 	const { useParticipants } = useCallStateHooks();
 	const participants = useParticipants();
 	return (

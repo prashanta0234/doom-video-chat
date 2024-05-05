@@ -4,6 +4,8 @@ import {
 	CallParticipantsList,
 	PaginatedGridLayout,
 	SpeakerLayout,
+	useCall,
+	useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -26,11 +28,19 @@ const MeetingRoom = () => {
 	const [showParticipant, setShowParticipant] = useState(false);
 	const [windowSize, setWindowSize] = useState(window.innerWidth);
 	const router = useRouter();
+	const call = useCall();
+	const { useCallCallingState, useParticipants } = useCallStateHooks();
+
+	const callingState = useCallCallingState();
+	console.log(callingState);
 
 	const cancelCallButton = () => {
 		router.push("/");
 	};
-	// const screenSize = screen.width;
+
+	if (callingState === "left") {
+		router.push("/");
+	}
 	useEffect(() => {
 		const handleResize = () => {
 			setWindowSize(window.innerWidth);

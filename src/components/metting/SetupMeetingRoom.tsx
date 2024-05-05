@@ -34,6 +34,7 @@ const SetupMeetingRoom = ({
 		} else {
 			call.camera.enable();
 			call.microphone.enable();
+			call.screenShare.enable();
 		}
 	}, [isMicToggleOn, isCamToggleOn, call]);
 
