@@ -1,10 +1,11 @@
+import { Loader2 } from "lucide-react";
 import React from "react";
 
 export const Loader = () => {
 	return (
 		<>
 			<div className="flex justify-center">
-				<p>Loading......</p>
+				<Loader2 />
 			</div>
 		</>
 	);
