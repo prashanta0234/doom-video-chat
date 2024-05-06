@@ -1,4 +1,3 @@
-import MeetingCard from "@/components/shared/MeetingCard";
 import MeetingList from "@/components/shared/MeetingList";
 import React from "react";
 
