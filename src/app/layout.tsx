@@ -20,12 +20,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<SpeedInsights />
 			<ClerkProvider>
 				<html lang="en">
 					<body className={`${inter.className} bg-dark-1 min-h-screen`}>
 						{children}
 						<Toaster />
+						<SpeedInsights />
 					</body>
 				</html>
 			</ClerkProvider>
