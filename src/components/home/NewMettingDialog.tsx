@@ -33,7 +33,7 @@ const NewMeetingDialog = ({
 	return (
 		<>
 			<Dialog open={isOpen} onOpenChange={onClose}>
-				<DialogContent className="bg-dark-1">
+				<DialogContent className="bg-dark-1 border-none">
 					<div className="flex flex-col gap-6">
 						<DialogHeader>
 							<DialogTitle className=" text-center">{title}</DialogTitle>
