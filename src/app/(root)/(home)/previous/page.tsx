@@ -9,7 +9,7 @@ const Previous = () => {
 				<h1 className="font-bold text-3xl">Previous Meetings</h1>
 			</div>
 			<div>
-				<MeetingList type="previous" />
+				<MeetingList type="ended" />
 			</div>
 		</section>
 	);

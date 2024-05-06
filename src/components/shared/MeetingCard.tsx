@@ -9,6 +9,8 @@ type MeetingListType = {
 	button2?: string;
 	btn1Icon?: string;
 	btn2Icon?: string;
+	handleClickBtn1?: () => void;
+	handleClickBtn2?: () => void;
 };
 
 const MeetingCard = ({
@@ -19,6 +21,8 @@ const MeetingCard = ({
 	button2,
 	btn1Icon,
 	btn2Icon,
+	handleClickBtn1,
+	handleClickBtn2,
 }: MeetingListType) => {
 	return (
 		<>
@@ -33,7 +37,10 @@ const MeetingCard = ({
 				</div>
 				<div className="flex gap-4 mt-5">
 					{button1 && (
-						<button className="py-2 px-5 rounded-md bg-blue-1 flex items-center gap-2">
+						<button
+							className="py-2 px-5 rounded-md bg-blue-1 flex items-center gap-2"
+							onClick={handleClickBtn1}
+						>
 							{btn1Icon && (
 								<Image alt="copy" src={btn1Icon} height={14} width={14} />
 							)}
@@ -43,7 +50,10 @@ const MeetingCard = ({
 					)}
 
 					{button2 && (
-						<button className="py-2 px-5 rounded-md flex items-center gap-2 bg-dark-1">
+						<button
+							className="py-2 px-5 rounded-md flex items-center gap-2 bg-dark-1"
+							onClick={handleClickBtn2}
+						>
 							{btn2Icon && (
 								<Image alt="copy" src={btn2Icon} height={14} width={14} />
 							)}

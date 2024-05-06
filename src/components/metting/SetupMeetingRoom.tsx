@@ -5,11 +5,13 @@ import {
 	DeviceSettings,
 	VideoPreview,
 	useCall,
+	useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import React, { useEffect, useState } from "react";
 import { DisabledVideoPreview } from "./OffVideoMic";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Alert from "../shared/Alert";
 
 const SetupMeetingRoom = ({
 	setIsSetupCompleted,
@@ -19,6 +21,13 @@ const SetupMeetingRoom = ({
 	const [isMicToggleOn, setIsMicToggleOn] = useState(false);
 	const [isCamToggleOn, setCamToggleOn] = useState(false);
 	const router = useRouter();
+
+	const { useCallEndedAt, useCallStartsAt } = useCallStateHooks();
+	const callStartsAt = useCallStartsAt();
+	const callEndedAt = useCallEndedAt();
+	const callTimeNotArrived =
+		callStartsAt && new Date(callStartsAt) > new Date();
+	const callHasEnded = !!callEndedAt;
 
 	const call = useCall();
 	if (!call) {
@@ -31,12 +40,31 @@ const SetupMeetingRoom = ({
 
 		if (isCamToggleOn) {
 			call.camera.disable();
+		}
+
+		if (callTimeNotArrived) {
+			call.camera.disable();
+			call.microphone.disable();
 		} else {
 			call.camera.enable();
 			call.microphone.enable();
-			call.screenShare.enable();
 		}
-	}, [isMicToggleOn, isCamToggleOn, call]);
+	}, [isMicToggleOn, isCamToggleOn, call, callTimeNotArrived]);
+
+	if (callTimeNotArrived) {
+		return (
+			<Alert
+				title={`Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString()}`}
+			/>
+		);
+	}
+	if (callHasEnded)
+		return (
+			<Alert
+				title="The call has been ended by the host"
+				iconUrl="/icons/call-ended.svg"
+			/>
+		);
 
 	const joinMeeting = () => {
 		setIsSetupCompleted(true);
