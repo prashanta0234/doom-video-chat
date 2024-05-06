@@ -1,4 +1,9 @@
 import { SignIn } from "@clerk/nextjs";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+	title: "Doom Login",
+	description: "Doom login auth",
+};
 
 export default function Page() {
 	return (

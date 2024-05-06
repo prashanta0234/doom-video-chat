@@ -1,14 +1,13 @@
+"use client";
+
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
-import React, { useState } from "react";
-import SetupMeetingRoom from "@/components/metting/SetupMeetingRoom";
-import MeetingRoom from "@/components/metting/MeetingRoom";
+import React from "react";
+
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { Loader } from "@/components/shared/Loader";
 import MeetingPage from "./MeetingPage";
 
 const Meeting = ({ params: { slug } }: { params: { slug: string } }) => {
-	const [isSetupCompleted, setIsSetupCompleted] = useState(false);
-
 	const { call, isCallLoading } = useGetCallById(slug);
 	if (isCallLoading) {
 		return <Loader />;
