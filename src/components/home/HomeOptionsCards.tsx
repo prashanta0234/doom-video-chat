@@ -20,6 +20,7 @@ const HomeOptionsCards = () => {
 
 	const [callDetails, setCallDetails] = useState<Call>();
 	const [date, setDate] = useState(new Date());
+	const [meetingId, setMeetingId] = useState<string | undefined>();
 
 	const router = useRouter();
 	const user = useUser();
@@ -103,6 +104,15 @@ const HomeOptionsCards = () => {
 				title: "Can`t create a new meeting. ",
 			});
 		}
+	};
+
+	const joinMeeting = () => {
+		if (!meetingId) {
+			toast({
+				title: "Please enter meeting id ",
+			});
+		}
+		router.push(`meeting/${meetingId}`);
 	};
 
 	const copyStateValue = () => {
@@ -207,6 +217,22 @@ const HomeOptionsCards = () => {
 				buttonText="Create meeting"
 				handleClick={createMeeting}
 			/>
+
+			<NewMeetingDialog
+				isOpen={option === "joinMeeting"}
+				onClose={() => setOption(undefined)}
+				title="Join meeting with Meeting Id"
+				buttonText="Join meeting"
+				handleClick={joinMeeting}
+			>
+				<div className="flex flex-col gap-2">
+					<label>Enter your meeting id</label>
+					<input
+						className="bg-dark-2 text-white min-h-15 p-2 rounded-md "
+						onChange={(val) => setMeetingId(val.target.value)}
+					/>
+				</div>
+			</NewMeetingDialog>
 		</div>
 	);
 };
