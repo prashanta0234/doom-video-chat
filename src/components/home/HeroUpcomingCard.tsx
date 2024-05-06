@@ -2,9 +2,10 @@
 
 import { useGetCalls } from "@/hooks/useDateCalls";
 import React from "react";
+import { Loader } from "../shared/Loader";
 
 const UpcomingCard = () => {
-	const { upcomingCalls } = useGetCalls();
+	const { upcomingCalls, isLoading } = useGetCalls();
 
 	const startsAtDate = upcomingCalls && upcomingCalls[1]?.state?.startsAt;
 	const date = startsAtDate ? new Date(startsAtDate) : null;
@@ -47,23 +48,31 @@ const UpcomingCard = () => {
 
 	return (
 		<>
-			{upcomingCalls && upcomingCalls.length > 0 && (
-				<div className="!w-full min-h-[280px] bg-upcoming-card rounded-[20px] p-10 ">
-					<div className="flex flex-col h-full justify-between gap-20">
-						<p className="bg-dark-2 p-2 text-sm leading-5 rounded-md w-fit">
-							Upcoming Meeting at: {date && formatDate(date)}
-						</p>
-						<div>
-							<p className="text-7xl font-extrabold	">
-								{date ? formatAMPM(date) : ""}
+			<div className="!w-full min-h-[280px] bg-upcoming-card rounded-[20px] p-10 ">
+				{!isLoading ? (
+					upcomingCalls && upcomingCalls.length > 0 ? (
+						<div className="flex flex-col h-full justify-between gap-20">
+							<p className="bg-dark-2 p-2 text-sm leading-5 rounded-md w-fit">
+								Upcoming Meeting at: {date && formatDate(date)}
 							</p>
-							<p className="text-2xl font-medium text-[#C9DDFF]">
-								{date ? formatDate(date) : ""}
-							</p>
+							<div>
+								<p className="text-7xl font-extrabold	">
+									{date ? formatAMPM(date) : ""}
+								</p>
+								<p className="text-2xl font-medium text-[#C9DDFF]">
+									{date ? formatDate(date) : ""}
+								</p>
+							</div>
 						</div>
-					</div>
-				</div>
-			)}
+					) : (
+						<p className="bg-dark-2 p-2 text-sm leading-5 rounded-md w-fit">
+							You Don`t have any upcoming Meetings
+						</p>
+					)
+				) : (
+					<Loader />
+				)}
+			</div>
 		</>
 	);
 };
