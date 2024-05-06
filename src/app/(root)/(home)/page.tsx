@@ -1,6 +1,6 @@
-import HomeOptionsCards from "@/components/home/homeOptionsCards";
-import TodaysUpcomingMeetings from "@/components/home/todaysUpcomingMettings";
-import UpcomingCard from "@/components/home/upcomingCard";
+import HomeOptionsCards from "@/components/home/HomeOptionsCards";
+import TodaysUpcomingMeetings from "@/components/home/TodaysUpcomingMettings";
+import UpcomingCard from "@/components/home/HeroUpcomingCard";
 import React from "react";
 
 const Home = () => {

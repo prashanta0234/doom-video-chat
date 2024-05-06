@@ -1,5 +1,7 @@
-import NavBar from "@/components/shared/navBar";
-import SideBar from "@/components/shared/sideBar";
+import NavBar from "@/components/shared/NavBar";
+import SideBar from "@/components/shared/SideBar";
+import { StreamVideoProvider } from "@/providers/StreamClientProvider";
+import { auth } from "@clerk/nextjs/server";
 import React from "react";
 
 const HomeLayout = ({
