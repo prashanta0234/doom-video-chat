@@ -1,6 +1,13 @@
 import MeetingList from "@/components/shared/MeetingList";
 import React from "react";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Upcoming Meetings",
+	description: "Doom Zoom Upcoming meetings",
+};
+
 const UpComing = () => {
 	return (
 		<>
