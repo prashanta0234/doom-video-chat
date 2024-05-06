@@ -137,10 +137,16 @@ const MeetingList = ({ type }: MeetingListType) => {
 										(meeting as CallRecording).start_time?.toLocaleString()
 									}
 									icon={"/icons/recording.svg"}
-									button1="Play"
 									button2="Share"
 									btn2Icon="/icons/share.svg"
-									btn1Icon="/icons/play.svg"
+									handleClickBtn2={() => {
+										navigator.clipboard.writeText(
+											(meeting as CallRecording).url
+										);
+										toast({
+											title: "Link Copied",
+										});
+									}}
 								/>
 							))}
 					</>
